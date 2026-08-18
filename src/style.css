@@ -135,6 +135,10 @@ strong { font-weight: 500; color: var(--ink); }
 .progress { position: fixed; top: 0; left: 0; width: 100%; height: 1px; z-index: 9000; pointer-events: none; }
 .progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--opal-blue), var(--opal-teal)); }
 
+/* ===================== SKIP LINK ===================== */
+.skip-link { position: absolute; top: 18px; left: 22px; z-index: 10001; padding: 10px 18px; background: var(--gold); color: var(--bg); font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 2px; border-radius: 8px; transform: translateY(-120%); transition: transform .35s var(--ease); }
+.skip-link:focus { transform: translateY(0); }
+
 /* ===================== NAV ===================== */
 .nav {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 5000;
@@ -367,6 +371,7 @@ strong { font-weight: 500; color: var(--ink); }
 .embed:hover .embed__play { background: rgba(214, 179, 115, 0.14); transform: scale(1.1); }
 .embed__hint { font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
 .sound__player .embed { position: static; height: 352px; }
+.sound__player iframe { display: block; width: 100%; height: 352px; border: 0; }
 
 /* ===================== WORDS / PRESS ===================== */
 .words__inner { text-align: center; max-width: 900px; margin: 0 auto; padding: 20px 0; }
