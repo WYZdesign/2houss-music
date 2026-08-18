@@ -206,8 +206,14 @@ function initParticles() {
   const canvas = document.getElementById('particles');
   const ctx = canvas.getContext('2d');
   let w, h, particles = [];
-  const count = window.innerWidth < 768 ? 40 : 90;
+  const count = window.innerWidth < 768 ? 46 : 96;
   const mouse = { x: -9999, y: -9999 };
+  const COLORS = [
+    'rgba(207,234,255,',
+    'rgba(236,216,168,',
+    'rgba(63,214,192,',
+    'rgba(138,123,246,',
+  ];
 
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -224,33 +230,51 @@ function initParticles() {
       particles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.4,
-        hue: Math.random() < 0.6 ? 320 : (Math.random() < 0.5 ? 265 : 20),
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        r: Math.random() * 1.4 + 0.4,
+        c: Math.floor(Math.random() * COLORS.length),
+        twSpeed: Math.random() * 1.6 + 0.4,
+        twPhase: Math.random() * Math.PI * 2,
+        glint: Math.random() < 0.14,
       });
     }
   }
 
   function step() {
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    const link = 110;
+    const t = performance.now() / 1000;
+    const link = 120;
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx; p.y += p.vy;
       const dxm = p.x - mouse.x, dym = p.y - mouse.y;
       const dm = Math.hypot(dxm, dym);
-      if (dm < 130) {
-        p.x += (dxm / dm) * 1.4;
-        p.y += (dym / dm) * 1.4;
-      }
+      if (dm < 140) { p.x += (dxm / dm) * 0.9; p.y += (dym / dm) * 0.9; }
       if (p.x < -20) p.x = window.innerWidth + 20; else if (p.x > window.innerWidth + 20) p.x = -20;
       if (p.y < -20) p.y = window.innerHeight + 20; else if (p.y > window.innerHeight + 20) p.y = -20;
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${p.hue}, 90%, 65%, 0.5)`;
-      ctx.fill();
+      const tw = 0.5 + 0.5 * Math.sin(t * p.twSpeed + p.twPhase);
+      const a = 0.22 + 0.5 * tw;
+
+      if (p.glint) {
+        const s = p.r * (3 + 2.4 * tw);
+        ctx.strokeStyle = COLORS[p.c] + (a * 0.9) + ')';
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(p.x - s, p.y); ctx.lineTo(p.x + s, p.y);
+        ctx.moveTo(p.x, p.y - s); ctx.lineTo(p.x, p.y + s);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 1.1, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.35 + 0.5 * tw) + ')';
+        ctx.fill();
+      } else {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = COLORS[p.c] + a + ')';
+        ctx.fill();
+      }
 
       for (let j = i + 1; j < particles.length; j++) {
         const q = particles[j];
@@ -259,8 +283,8 @@ function initParticles() {
         if (d < link) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = `hsla(300, 80%, 70%, ${(1 - d / link) * 0.12})`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = 'rgba(215,218,224,' + ((1 - d / link) * 0.05) + ')';
+          ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
