@@ -377,6 +377,30 @@ strong { font-weight: 500; color: var(--ink); }
 .words__strip { display: flex; align-items: center; justify-content: center; gap: 26px; flex-wrap: wrap; color: var(--muted); font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; letter-spacing: 2px; }
 .words__strip i { font-style: normal; color: var(--gold); font-size: 0.7rem; }
 
+/* ===================== PRESS / ACCOLADES ===================== */
+.accolades { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 70px; }
+.accolade { border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; background: rgba(10, 12, 18, 0.5); }
+.accolade__year { display: block; font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.accolade h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; margin-bottom: 10px; }
+.accolade p { color: var(--muted); font-size: 0.92rem; font-weight: 300; line-height: 1.6; }
+
+/* ===================== BOOKING ===================== */
+.booking { display: flex; flex-direction: column; gap: 20px; }
+.booking__row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field__label { font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); }
+.field input, .field select, .field textarea {
+  background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px;
+  color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; font-weight: 300;
+  transition: border-color .3s var(--ease); width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
+.field select option { background: var(--bg-2); color: var(--ink); }
+.field textarea { resize: vertical; min-height: 110px; }
+.booking .btn { align-self: flex-start; margin-top: 4px; }
+.contact__side { display: flex; flex-direction: column; gap: 26px; }
+.contact__note { color: var(--muted); font-size: 1.05rem; font-weight: 300; }
+
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1024px) {
   .discog { grid-template-columns: repeat(3, 1fr); }
@@ -394,6 +418,8 @@ strong { font-weight: 500; color: var(--ink); }
   .contact__inner { grid-template-columns: 1fr; }
   .legacy__item { grid-template-columns: 1fr; gap: 10px; }
   .legacy__year { font-size: 1.7rem; }
+  .accolades { grid-template-columns: repeat(2, 1fr); }
+  .booking__row { grid-template-columns: 1fr; }
   .hero__actions .txt-mask__inner { gap: 12px; }
   .btn { padding: 14px 26px; font-size: 0.72rem; }
   .marquee__track { gap: 36px; }
@@ -401,6 +427,7 @@ strong { font-weight: 500; color: var(--ink); }
 @media (max-width: 480px) {
   .discog { grid-template-columns: 1fr 1fr; gap: 12px; }
   .discog-card__title { font-size: 1.15rem; }
+  .accolades { grid-template-columns: 1fr; }
   .footer__bar { flex-direction: column; gap: 8px; }
 }
 

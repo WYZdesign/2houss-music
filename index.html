@@ -56,6 +56,7 @@
       <a href="#sound" class="nav__link" data-text="Sound">Sound</a>
       <a href="#videos" class="nav__link" data-text="Videos">Videos</a>
       <a href="#legacy" class="nav__link" data-text="Legacy">Legacy</a>
+      <a href="#press" class="nav__link" data-text="Press">Press</a>
     </nav>
     <div class="nav__cta">
       <a class="btn btn--solid magnetic" href="https://open.spotify.com/artist/1rsg5p2upYrSUIyYPDsZmA" target="_blank" rel="noopener">
@@ -76,7 +77,8 @@
       <a href="#sound" class="menu__item" style="--i:2"><span class="menu__num">03</span> Sound</a>
       <a href="#videos" class="menu__item" style="--i:3"><span class="menu__num">04</span> Videos</a>
       <a href="#legacy" class="menu__item" style="--i:4"><span class="menu__num">05</span> Legacy</a>
-      <a href="#contact" class="menu__item" style="--i:5"><span class="menu__num">06</span> Contact</a>
+      <a href="#press" class="menu__item" style="--i:5"><span class="menu__num">06</span> Press</a>
+      <a href="#contact" class="menu__item" style="--i:6"><span class="menu__num">07</span> Contact</a>
     </nav>
     <div class="menu__foot">
       <span>Chicago → Phoenix</span>
@@ -318,8 +320,12 @@
       </div>
     </section>
 
-    <!-- ===================== WORDS / PRESS ===================== -->
-    <section class="words section" id="words">
+    <!-- ===================== PRESS ===================== -->
+    <section class="words section" id="press">
+      <div class="section__head reveal">
+        <span class="section__index">06 — PRESS</span>
+        <h2 class="section__title">The <em>Word</em></h2>
+      </div>
       <div class="words__inner">
         <span class="words__mark" aria-hidden="true">“</span>
         <blockquote class="words__quote reveal">One of the <em>best hip-house records</em> of the '90s.</blockquote>
@@ -328,25 +334,80 @@
           <span>Trax Records</span><i>◆</i><span>Neco</span><i>◆</i><span>Olio Entertainment</span><i>◆</i><span>Gherkin</span><i>◆</i><span>2HoussMusic</span>
         </div>
       </div>
+      <div class="accolades">
+        <div class="accolade reveal">
+          <span class="accolade__year">1987</span>
+          <h3>Trax Records</h3>
+          <p>Debut <em>“Move My Body”</em> on the Chicago label that wrote the book on house.</p>
+        </div>
+        <div class="accolade reveal">
+          <span class="accolade__year">1990s</span>
+          <h3>Hip-House Royalty</h3>
+          <p><em>“Baby Wants To Move You”</em> with Brett Wilcott — named a best hip-house record of the decade.</p>
+        </div>
+        <div class="accolade reveal">
+          <span class="accolade__year">1987</span>
+          <h3>House Music Pioneer</h3>
+          <p>Original founder of <strong>2 House People</strong> — the crew now known as 2Housspeople.</p>
+        </div>
+        <div class="accolade reveal">
+          <span class="accolade__year">1983 → Now</span>
+          <h3>Four Decades Deep</h3>
+          <p>On the decks since 1983 — from Chicago's warehouses to the Phoenix desert.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- ===================== CONTACT ===================== -->
+    <!-- ===================== CONTACT / BOOKING ===================== -->
     <section class="contact section" id="contact">
+      <div class="section__head reveal">
+        <span class="section__index">07 — BOOKING</span>
+        <h2 class="section__title">Let's<br /><em>Work</em></h2>
+      </div>
       <div class="contact__inner">
-        <div class="contact__cta reveal">
-          <h2 class="contact__title">Let's<br /><em>Work</em></h2>
-          <p>Bookings · Remixes · Collabs — the groove is always open.</p>
-          <div class="contact__actions">
-            <a class="btn btn--solid magnetic" href="mailto:bookings@2houss.com" data-label="SEND"><span class="btn__label">Book J Lofton</span></a>
-            <a class="btn btn--ghost magnetic" href="http://Jlofton.RageOn.com" target="_blank" rel="noopener" data-label="SHOP"><span class="btn__label">Shop Merch</span></a>
+        <form class="booking" id="booking">
+          <div class="booking__row">
+            <label class="field">
+              <span class="field__label">Name</span>
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label class="field">
+              <span class="field__label">Email</span>
+              <input type="email" name="email" placeholder="you@email.com" required />
+            </label>
           </div>
-        </div>
-        <div class="contact__socials">
-          <a class="social magnetic reveal" href="https://www.instagram.com/houssmusic/" target="_blank" rel="noopener" data-label="OPEN"><span>Instagram</span><i>↗</i></a>
-          <a class="social magnetic reveal" href="https://x.com/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN"><span>X / Twitter</span><i>↗</i></a>
-          <a class="social magnetic reveal" href="https://www.facebook.com/groups/MidwestGrownNSexy" target="_blank" rel="noopener" data-label="OPEN"><span>Facebook</span><i>↗</i></a>
-          <a class="social magnetic reveal" href="https://www.youtube.com/user/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN"><span>YouTube</span><i>↗</i></a>
-          <a class="social magnetic reveal" href="https://www.discogs.com/artist/414653-James-Lofton" target="_blank" rel="noopener" data-label="OPEN"><span>Discogs</span><i>↗</i></a>
+          <div class="booking__row">
+            <label class="field">
+              <span class="field__label">Event type</span>
+              <select name="type">
+                <option>Club / Warehouse</option>
+                <option>Private Event</option>
+                <option>Festival</option>
+                <option>Radio / Podcast</option>
+                <option>Remix / Production</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Date</span>
+              <input type="date" name="date" />
+            </label>
+          </div>
+          <label class="field">
+            <span class="field__label">Message</span>
+            <textarea name="message" rows="4" placeholder="Tell us about the night..."></textarea>
+          </label>
+          <button class="btn btn--solid magnetic" type="submit" data-label="SEND"><span class="btn__label">Send Inquiry</span></button>
+        </form>
+        <div class="contact__side">
+          <p class="contact__note reveal">Bookings · Remixes · Collabs — the groove is always open. Or reach out direct:</p>
+          <div class="contact__socials">
+            <a class="social magnetic reveal" href="https://www.instagram.com/houssmusic/" target="_blank" rel="noopener" data-label="OPEN"><span>Instagram</span><i>↗</i></a>
+            <a class="social magnetic reveal" href="https://x.com/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN"><span>X / Twitter</span><i>↗</i></a>
+            <a class="social magnetic reveal" href="https://www.facebook.com/groups/MidwestGrownNSexy" target="_blank" rel="noopener" data-label="OPEN"><span>Facebook</span><i>↗</i></a>
+            <a class="social magnetic reveal" href="https://www.youtube.com/user/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN"><span>YouTube</span><i>↗</i></a>
+            <a class="social magnetic reveal" href="https://www.discogs.com/artist/414653-James-Lofton" target="_blank" rel="noopener" data-label="OPEN"><span>Discogs</span><i>↗</i></a>
+          </div>
+          <a class="btn btn--ghost magnetic reveal" href="http://Jlofton.RageOn.com" target="_blank" rel="noopener" data-label="SHOP"><span class="btn__label">Shop Merch</span></a>
         </div>
       </div>
     </section>

@@ -553,10 +553,31 @@ function initEmbeds() {
 }
 
 /* ============================================================
+   BOOKING FORM
+   ============================================================ */
+function initBooking() {
+  const form = document.getElementById('booking');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = fd.get('name') || '';
+    const email = fd.get('email') || '';
+    const type = fd.get('type') || '';
+    const date = fd.get('date') || '';
+    const msg = fd.get('message') || '';
+    const subject = encodeURIComponent('Booking enquiry — ' + type);
+    const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nEvent type: ' + type + '\nDate: ' + date + '\n\n' + msg);
+    window.location.href = 'mailto:bookings@2houss.com?subject=' + subject + '&body=' + body;
+  });
+}
+
+/* ============================================================
    BOOT
    ============================================================ */
 function boot() {
   initEmbeds();
+  initBooking();
   if (!reduced) {
     initParticles();
     initDiscoBall();
