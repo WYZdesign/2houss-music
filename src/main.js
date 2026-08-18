@@ -305,6 +305,102 @@ function initParticles() {
 }
 
 /* ============================================================
+   DISCO BALL
+   ============================================================ */
+function initDiscoBall() {
+  const canvas = document.getElementById('disco');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const LAT = 9, LON = 18;
+  let rot = 0;
+  let raf = null;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const size = canvas.parentElement ? canvas.parentElement.clientWidth : 190;
+    canvas.width = Math.round(size * dpr);
+    canvas.height = Math.round(size * dpr);
+    canvas.style.width = size + 'px';
+    canvas.style.height = size + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw() {
+    const s = canvas.clientWidth || canvas.width;
+    if (!s) return;
+    const cx = s / 2, cy = s / 2, R = s / 2 - 3;
+    ctx.clearRect(0, 0, s, s);
+
+    ctx.strokeStyle = 'rgba(215,218,224,0.35)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, 5); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, 6, 2.5, 0, Math.PI * 2); ctx.fillStyle = 'rgba(215,218,224,0.5)'; ctx.fill();
+
+    const lx = 0.42, ly = -0.6, lz = 0.68;
+    for (let i = 1; i < LAT; i++) {
+      const theta = (i / LAT) * Math.PI;
+      for (let j = 0; j < LON; j++) {
+        const phi = (j / LON) * Math.PI * 2 + rot;
+        const nx = Math.sin(theta) * Math.cos(phi);
+        const ny = Math.cos(theta);
+        const nz = Math.sin(theta) * Math.sin(phi);
+        if (nz <= 0) continue;
+        const b = Math.max(0, nx * lx + ny * ly + nz * lz);
+        const x = cx + nx * R;
+        const y = cy - ny * R;
+        const t = (R * 2) / LAT;
+        const sz = t * (0.72 + 0.28 * Math.sin(theta));
+        let col;
+        if (b > 0.86) col = 'rgba(255,252,242,0.95)';
+        else if (b > 0.6) col = 'rgba(236,216,168,' + (0.25 + b * 0.45).toFixed(2) + ')';
+        else if (b > 0.3) col = 'rgba(150,180,215,' + (0.10 + b * 0.35).toFixed(2) + ')';
+        else col = 'rgba(90,100,120,' + (0.05 + b * 0.25).toFixed(2) + ')';
+        ctx.fillStyle = col;
+        ctx.fillRect(x - sz / 2, y - sz / 2, sz, sz);
+      }
+    }
+
+    const g = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
+    g.addColorStop(0, 'rgba(255,255,255,0.10)');
+    g.addColorStop(0.55, 'rgba(0,0,0,0.06)');
+    g.addColorStop(1, 'rgba(0,0,0,0.55)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+
+    ctx.strokeStyle = 'rgba(214,179,115,0.25)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+
+    const flash = Math.sin(rot * 3.1);
+    if (flash > 0.965) {
+      const gx = cx - R * 0.4, gy = cy - R * 0.5;
+      const gl = 8 + (flash - 0.965) * 260;
+      ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(gx - gl, gy); ctx.lineTo(gx + gl, gy);
+      ctx.moveTo(gx, gy - gl); ctx.lineTo(gx, gy + gl);
+      ctx.stroke();
+    }
+  }
+
+  function frame() {
+    rot += 0.007;
+    draw();
+    if (!reduced) raf = requestAnimationFrame(frame);
+  }
+
+  resize();
+  if (reduced) { rot = 0.8; frame(); }
+  else { raf = requestAnimationFrame(frame); }
+  window.addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
+    else if (!raf && !reduced) raf = requestAnimationFrame(frame);
+  });
+}
+
+/* ============================================================
    INTRO TIMELINE
    ============================================================ */
 function intro() {
@@ -317,6 +413,7 @@ function intro() {
     .fromTo('.hero__sub .txt-mask__inner', { yPercent: 120 }, { yPercent: 0, duration: 0.9 }, 0.85)
     .fromTo('.hero__actions .txt-mask__inner', { yPercent: 120 }, { yPercent: 0, duration: 0.9 }, 0.95)
     .fromTo('.hero__vinyl', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'expo.out' }, 0.5)
+    .fromTo('.hero__disco', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'expo.out' }, 0.6)
     .fromTo('.hero__eq span', { scaleY: 0 }, { scaleY: 1, duration: 0.5, stagger: 0.05 }, 1.0)
     .fromTo('.hero__scroll', { opacity: 0 }, { opacity: 1, duration: 0.6 }, 1.2);
 }
@@ -435,12 +532,14 @@ function initProgress() {
 function boot() {
   if (!reduced) {
     initParticles();
+    initDiscoBall();
     initParallax();
     runPreloader(() => { intro(); initReveals(); initCounters(); initMagnetic(); initTilt(); initProgress(); ScrollTrigger.refresh(); });
   } else {
     gsap.set('#preloader', { display: 'none' });
     gsap.set(['.reveal', '.discog-card', '.footer__wordmark'], { autoAlpha: 1 });
     initCounters();
+    initDiscoBall();
   }
   window.addEventListener('load', () => ScrollTrigger.refresh());
 
@@ -450,7 +549,7 @@ function boot() {
     if (p && getComputedStyle(p).display !== 'none') {
       gsap.set('#preloader', { display: 'none' });
       gsap.set(['.hero__line .txt-mask__inner', '.hero__eyebrow .txt-mask__inner', '.hero__sub .txt-mask__inner', '.hero__actions .txt-mask__inner', '.nav'], { clearProps: 'all' });
-      gsap.set(['.hero__vinyl', '.hero__eq span', '.hero__scroll'], { clearProps: 'all' });
+      gsap.set(['.hero__vinyl', '.hero__disco', '.hero__eq span', '.hero__scroll'], { clearProps: 'all' });
     }
   }, 6000);
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2HOUSS MUSIC — J Lofton · Chicago House Pioneer</title>
-  <meta name="description" content="2HoussMusic · J Lofton (James Earl Lofton) — Chicago House Pioneer spinning since 1983. Founder of 2Housspeople (est. 1987) on Trax, Neco, Gherkin & Olio. Now based in Phoenix, AZ." />
+  <meta name="description" content="2HoussMusic · J Lofton (James Earl Lofton) — Chicago House Pioneer spinning since 1983. Founder of 2Housspeople (est. 1987) on Trax, Neco, Gherkin & Olio. Underground house, deep, jackin & soulful. Now based in Phoenix, AZ." />
   <meta property="og:title" content="2HOUSS MUSIC — J Lofton · Chicago House Pioneer" />
   <meta property="og:description" content="Chicago House pioneer, DJ since 1983. Founder of 2Housspeople. Trax · Neco · Gherkin · Olio." />
   <meta property="og:type" content="website" />
@@ -53,6 +53,7 @@
     <nav class="nav__links" aria-label="Primary">
       <a href="#about" class="nav__link" data-text="About">About</a>
       <a href="#music" class="nav__link" data-text="Music">Music</a>
+      <a href="#sound" class="nav__link" data-text="Sound">Sound</a>
       <a href="#videos" class="nav__link" data-text="Videos">Videos</a>
       <a href="#legacy" class="nav__link" data-text="Legacy">Legacy</a>
     </nav>
@@ -72,9 +73,10 @@
     <nav class="menu__nav">
       <a href="#about" class="menu__item" style="--i:0"><span class="menu__num">01</span> About</a>
       <a href="#music" class="menu__item" style="--i:1"><span class="menu__num">02</span> Music</a>
-      <a href="#videos" class="menu__item" style="--i:2"><span class="menu__num">03</span> Videos</a>
-      <a href="#legacy" class="menu__item" style="--i:3"><span class="menu__num">04</span> Legacy</a>
-      <a href="#contact" class="menu__item" style="--i:4"><span class="menu__num">05</span> Contact</a>
+      <a href="#sound" class="menu__item" style="--i:2"><span class="menu__num">03</span> Sound</a>
+      <a href="#videos" class="menu__item" style="--i:3"><span class="menu__num">04</span> Videos</a>
+      <a href="#legacy" class="menu__item" style="--i:4"><span class="menu__num">05</span> Legacy</a>
+      <a href="#contact" class="menu__item" style="--i:5"><span class="menu__num">06</span> Contact</a>
     </nav>
     <div class="menu__foot">
       <span>Chicago → Phoenix</span>
@@ -88,6 +90,7 @@
       <div class="hero__eq" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
+      <div class="hero__disco" aria-hidden="true"><canvas id="disco"></canvas></div>
       <div class="hero__content">
         <p class="hero__eyebrow txt-mask"><span class="txt-mask__inner">JAMES EARL LOFTON · 2HOUSSPEOPLE · EST. 1983</span></p>
         <h1 class="hero__title">
@@ -95,7 +98,7 @@
           <span class="hero__line hero__line--accent txt-mask"><span class="txt-mask__inner">HOUSE</span></span>
           <span class="hero__line txt-mask"><span class="txt-mask__inner">PIONEER</span></span>
         </h1>
-        <p class="hero__sub txt-mask"><span class="txt-mask__inner">DJ · Producer · Songwriter · Remixer — the soul behind <em>2HoussMusic</em>,<br class="br" /> grown, timeless, and carrying the Chicago flame since 1983.</span></p>
+        <p class="hero__sub txt-mask"><span class="txt-mask__inner">DJ · Producer · Songwriter · Remixer — the soul behind <em>2HoussMusic</em>,<br class="br" /> timeless, and carrying the Chicago flame since 1983.</span></p>
         <div class="hero__actions txt-mask">
           <span class="txt-mask__inner">
             <a class="btn btn--solid magnetic" href="#music" data-label="PLAY">
@@ -128,8 +131,8 @@
     <!-- ===================== MARQUEE ===================== -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track marquee__track--a">
-        <span>House Music Pioneer</span><i>◆</i><span>DJ Since 1983</span><i>◆</i><span>2Houss</span><i>◆</i><span>Chicago → Phoenix</span><i>◆</i><span>Grown &amp; Sexy</span><i>◆</i><span>Trax Records</span><i>◆</i>
-        <span>House Music Pioneer</span><i>◆</i><span>DJ Since 1983</span><i>◆</i><span>2Houss</span><i>◆</i><span>Chicago → Phoenix</span><i>◆</i><span>Grown &amp; Sexy</span><i>◆</i><span>Trax Records</span><i>◆</i>
+        <span>House Music Pioneer</span><i>◆</i><span>DJ Since 1983</span><i>◆</i><span>Chicago Underground</span><i>◆</i><span>Deep · Jackin · Soulful</span><i>◆</i><span>Trax Records</span><i>◆</i><span>Four on the Floor</span><i>◆</i>
+        <span>House Music Pioneer</span><i>◆</i><span>DJ Since 1983</span><i>◆</i><span>Chicago Underground</span><i>◆</i><span>Deep · Jackin · Soulful</span><i>◆</i><span>Trax Records</span><i>◆</i><span>Four on the Floor</span><i>◆</i>
       </div>
     </div>
 
@@ -211,10 +214,39 @@
       </div>
     </section>
 
+    <!-- ===================== SOUND / LISTEN ===================== -->
+    <section class="sound section" id="sound">
+      <div class="section__head reveal">
+        <span class="section__index">03 — THE SOUND</span>
+        <h2 class="section__title">Underground<br /><em>House</em></h2>
+      </div>
+      <div class="sound__grid">
+        <div class="sound__player reveal">
+          <iframe src="https://open.spotify.com/embed/artist/1rsg5p2upYrSUIyYPDsZmA?utm_source=generator&theme=0" title="2Housspeople on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="sound__info">
+          <p class="reveal">Deep, jackin', soulful — the raw sound born in Chicago's warehouses, four on the floor, carried south to the desert. No gimmicks. Just groove.</p>
+          <div class="sound__tags">
+            <span class="tag reveal">Deep House</span>
+            <span class="tag reveal">Soulful House</span>
+            <span class="tag reveal">Jackin House</span>
+            <span class="tag reveal">Acid House</span>
+            <span class="tag reveal">Disco House</span>
+            <span class="tag reveal">Chicago House</span>
+          </div>
+          <div class="beat reveal" aria-hidden="true">
+            <span class="beat__pulse"></span>
+            <div class="beat__bars"><i></i><i></i><i></i><i></i></div>
+            <span class="beat__label">124 BPM · FOUR ON THE FLOOR</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== VIDEOS ===================== -->
     <section class="videos section" id="videos">
       <div class="section__head reveal">
-        <span class="section__index">03 — VISUALS</span>
+        <span class="section__index">04 — VISUALS</span>
         <h2 class="section__title">Watch<br /><em>The Set</em></h2>
       </div>
       <div class="videos__grid">
@@ -242,7 +274,7 @@
     <!-- ===================== LEGACY / ACCOLADES ===================== -->
     <section class="legacy section" id="legacy">
       <div class="section__head reveal">
-        <span class="section__index">04 — LEGACY</span>
+        <span class="section__index">05 — LEGACY</span>
         <h2 class="section__title">Forty Years<br /><em>Deep</em></h2>
       </div>
       <div class="legacy__timeline">
@@ -277,6 +309,18 @@
       </div>
     </section>
 
+    <!-- ===================== WORDS / PRESS ===================== -->
+    <section class="words section" id="words">
+      <div class="words__inner">
+        <span class="words__mark" aria-hidden="true">“</span>
+        <blockquote class="words__quote reveal">One of the <em>best hip-house records</em> of the '90s.</blockquote>
+        <p class="words__attr reveal">— Dance-music press, on <strong>“Baby Wants To Move You”</strong> · Gherkin Records</p>
+        <div class="words__strip reveal">
+          <span>Trax Records</span><i>◆</i><span>Neco</span><i>◆</i><span>Olio Entertainment</span><i>◆</i><span>Gherkin</span><i>◆</i><span>2HoussMusic</span>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== CONTACT ===================== -->
     <section class="contact section" id="contact">
       <div class="contact__inner">
@@ -305,7 +349,7 @@
     <div class="footer__bar">
       <span>© 2026 2HoussMusic · J Lofton</span>
       <span>Chicago → Phoenix, AZ</span>
-      <span>A tribute experience · built with love</span>
+      <span>Underground House · Est. 1983</span>
     </div>
   </footer>
 
