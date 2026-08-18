@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2HOUSS MUSIC — J Lofton · Chicago House Pioneer</title>
+  <meta name="description" content="2HoussMusic · J Lofton (James Earl Lofton) — Chicago House Pioneer spinning since 1983. Founder of 2Housspeople (est. 1987) on Trax, Neco, Gherkin & Olio. Now based in Phoenix, AZ." />
+  <meta property="og:title" content="2HOUSS MUSIC — J Lofton · Chicago House Pioneer" />
+  <meta property="og:description" content="Chicago House pioneer, DJ since 1983. Founder of 2Housspeople. Trax · Neco · Gherkin · Olio." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#07060b" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- ===================== PRELOADER ===================== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <div class="preloader__mark">2HOUSS</div>
+      <div class="preloader__count" id="preloadCount">0</div>
+      <div class="preloader__bar"><span id="preloadBar"></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== AMBIENT BACKGROUND ===================== -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__blob bg__blob--1"></div>
+    <div class="bg__blob bg__blob--2"></div>
+    <div class="bg__blob bg__blob--3"></div>
+    <canvas id="particles"></canvas>
+    <div class="bg__grid"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label"></div>
+  </div>
+
+  <!-- ===================== SCROLL PROGRESS ===================== -->
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="nav">
+    <a class="nav__logo magnetic" href="#top" data-label="HOME">
+      <span class="nav__logo-mark">2</span><span class="nav__logo-text">HOUSS</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about" class="nav__link" data-text="About">About</a>
+      <a href="#music" class="nav__link" data-text="Music">Music</a>
+      <a href="#videos" class="nav__link" data-text="Videos">Videos</a>
+      <a href="#legacy" class="nav__link" data-text="Legacy">Legacy</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--solid magnetic" href="https://open.spotify.com/artist/1rsg5p2upYrSUIyYPDsZmA" target="_blank" rel="noopener">
+        <span class="btn__label">Listen Now</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== MENU OVERLAY ===================== -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu__bg"></div>
+    <nav class="menu__nav">
+      <a href="#about" class="menu__item" style="--i:0"><span class="menu__num">01</span> About</a>
+      <a href="#music" class="menu__item" style="--i:1"><span class="menu__num">02</span> Music</a>
+      <a href="#videos" class="menu__item" style="--i:2"><span class="menu__num">03</span> Videos</a>
+      <a href="#legacy" class="menu__item" style="--i:3"><span class="menu__num">04</span> Legacy</a>
+      <a href="#contact" class="menu__item" style="--i:4"><span class="menu__num">05</span> Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <span>Chicago → Phoenix</span>
+      <span>Est. 1983</span>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero__eq" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="hero__content">
+        <p class="hero__eyebrow txt-mask"><span class="txt-mask__inner">JAMES EARL LOFTON · 2HOUSSPEOPLE · EST. 1983</span></p>
+        <h1 class="hero__title">
+          <span class="hero__line txt-mask"><span class="txt-mask__inner">CHICAGO</span></span>
+          <span class="hero__line hero__line--accent txt-mask"><span class="txt-mask__inner">HOUSE</span></span>
+          <span class="hero__line txt-mask"><span class="txt-mask__inner">PIONEER</span></span>
+        </h1>
+        <p class="hero__sub txt-mask"><span class="txt-mask__inner">DJ · Producer · Songwriter · Remixer — the man behind <em>2HoussMusic</em>,<br class="br" /> carrying the Chicago flame since 1983.</span></p>
+        <div class="hero__actions txt-mask">
+          <span class="txt-mask__inner">
+            <a class="btn btn--solid magnetic" href="#music" data-label="PLAY">
+              <span class="btn__label">Enter The Groove</span>
+            </a>
+            <a class="btn btn--ghost magnetic" href="#about" data-label="BIO">
+              <span class="btn__label">Read The Story</span>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="hero__vinyl" aria-hidden="true">
+        <div class="vinyl">
+          <div class="vinyl__grooves"></div>
+          <div class="vinyl__label"><span>2HOUSS</span><small>MUSIC</small></div>
+          <div class="vinyl__shine"></div>
+        </div>
+        <div class="needle">
+          <div class="needle__base"></div>
+          <div class="needle__arm"></div>
+          <div class="needle__head"></div>
+        </div>
+      </div>
+      <a class="hero__scroll" href="#about">
+        <span class="hero__scroll-text">SCROLL</span>
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track marquee__track--a">
+        <span>HOUSE MUSIC PIONEER</span><i>◆</i><span>DJ SINCE 1983</span><i>◆</i><span>2HOUSS</span><i>◆</i><span>CHICAGO → PHOENIX</span><i>◆</i><span>TRAX RECORDS</span><i>◆</i>
+        <span>HOUSE MUSIC PIONEER</span><i>◆</i><span>DJ SINCE 1983</span><i>◆</i><span>2HOUSS</span><i>◆</i><span>CHICAGO → PHOENIX</span><i>◆</i><span>TRAX RECORDS</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about section" id="about">
+      <div class="section__head reveal">
+        <span class="section__index">01 — THE STORY</span>
+        <h2 class="section__title">The Man Behind<br /><em>The Groove</em></h2>
+      </div>
+      <div class="about__grid">
+        <div class="about__copy">
+          <p class="about__lead reveal">James Earl Lofton — better known as <strong>J Lofton</strong> — is one of Chicago's hottest DJs, spinning since <strong>1983</strong>. Producer, songwriter, remixer, and a bona fide <strong>House Music Pioneer</strong>.</p>
+          <p class="reveal">He's the original founder of <strong>2 House People</strong>, formed in <strong>1987</strong> and known today as <strong>2Housspeople</strong>. Their debut <em>"Move My Body"</em> dropped on the legendary <strong>Trax Records</strong>, with follow-ups on <strong>Neco Records</strong>, <strong>Olio Entertainment</strong>, and <strong>Gherkin Records</strong>.</p>
+          <p class="reveal">His production <em>"Baby Wants To Move You"</em> — with pioneer Brett Wilcott — was written up in a dance-music magazine as one of the <strong>best hip-house records of the '90s</strong>. Now CEO of <strong>2HoussMusic</strong> and based in <strong>Phoenix, Arizona</strong>, J Lofton keeps creating new House, Electronica &amp; Dance.</p>
+          <a class="btn btn--ghost magnetic reveal" href="https://soundcloud.com/jlofton" target="_blank" rel="noopener" data-label="SC">
+            <span class="btn__label">Hear It On SoundCloud</span>
+          </a>
+        </div>
+        <div class="about__stats">
+          <div class="stat reveal">
+            <span class="stat__num" data-count="1983" data-prefix="">0</span>
+            <span class="stat__label">Spinning Since</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat__num" data-count="1987" data-prefix="">0</span>
+            <span class="stat__label">2Housspeople Founded</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat__num" data-count="40" data-suffix="+">0</span>
+            <span class="stat__label">Years In The Game</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat__num" data-count="5" data-suffix="★">0</span>
+            <span class="stat__label">Legendary Labels</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MUSIC / DISCOGRAPHY ===================== -->
+    <section class="music section" id="music">
+      <div class="section__head reveal">
+        <span class="section__index">02 — DISCOGRAPHY</span>
+        <h2 class="section__title">Selected<br /><em>Releases</em></h2>
+      </div>
+
+      <div class="discog" id="discog">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="music__listen">
+        <div class="music__feat reveal">
+          <div class="music__feat-art">
+            <div class="vinyl vinyl--mini"><div class="vinyl__grooves"></div><div class="vinyl__label"><span>2H</span></div></div>
+          </div>
+          <div class="music__feat-meta">
+            <span class="music__feat-tag">Featured Track</span>
+            <h3>Fuzion <em>(feat. J Lofton)</em></h3>
+            <p>2Housspeople · ℗ 2016 · 2HoussMusic</p>
+          </div>
+        </div>
+        <div class="music__platforms">
+          <a class="music__platform magnetic reveal" href="https://open.spotify.com/artist/1rsg5p2upYrSUIyYPDsZmA" target="_blank" rel="noopener" data-label="OPEN">
+            <span class="music__platform-icon">♪</span><span>Spotify</span>
+          </a>
+          <a class="music__platform magnetic reveal" href="https://music.apple.com/us/artist/2housspeople/321274619" target="_blank" rel="noopener" data-label="OPEN">
+            <span class="music__platform-icon">♪</span><span>Apple Music</span>
+          </a>
+          <a class="music__platform magnetic reveal" href="https://www.beatport.com/artist/2housspeople/180040" target="_blank" rel="noopener" data-label="OPEN">
+            <span class="music__platform-icon">♪</span><span>Beatport</span>
+          </a>
+          <a class="music__platform magnetic reveal" href="https://soundcloud.com/jlofton" target="_blank" rel="noopener" data-label="OPEN">
+            <span class="music__platform-icon">♪</span><span>SoundCloud</span>
+          </a>
+          <a class="music__platform magnetic reveal" href="https://www.youtube.com/user/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN">
+            <span class="music__platform-icon">♪</span><span>YouTube</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIDEOS ===================== -->
+    <section class="videos section" id="videos">
+      <div class="section__head reveal">
+        <span class="section__index">03 — VISUALS</span>
+        <h2 class="section__title">Watch<br /><em>The Set</em></h2>
+      </div>
+      <div class="videos__grid">
+        <div class="video-card reveal">
+          <div class="video-card__frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/XmTjzBqZhP0?rel=0" title="Fuzion (feat. J Lofton) — 2Housspeople" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-card__meta">
+            <h3>Fuzion <em>(feat. J Lofton)</em></h3>
+            <p>Official Audio · 2Housspeople</p>
+          </div>
+        </div>
+        <div class="video-card reveal">
+          <div class="video-card__frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL0Wrx5tVa7mfp02TBsr3WmcTYoDyw9V3X" title="2HoussMusic — Video Playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="video-card__meta">
+            <h3>The 2Houss <em>Playlist</em></h3>
+            <p>Full catalog on YouTube</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LEGACY / ACCOLADES ===================== -->
+    <section class="legacy section" id="legacy">
+      <div class="section__head reveal">
+        <span class="section__index">04 — LEGACY</span>
+        <h2 class="section__title">Forty Years<br /><em>Deep</em></h2>
+      </div>
+      <div class="legacy__timeline">
+        <div class="legacy__item reveal">
+          <span class="legacy__year">1983</span>
+          <div class="legacy__body">
+            <h3>The First Spin</h3>
+            <p>J Lofton steps behind the decks — one of Chicago's hottest DJs, on the decks for four decades and counting.</p>
+          </div>
+        </div>
+        <div class="legacy__item reveal">
+          <span class="legacy__year">1987</span>
+          <div class="legacy__body">
+            <h3>2 House People Born</h3>
+            <p>Founding member of the group that would become <strong>2Housspeople</strong> — debut <em>"Move My Body"</em> on Trax Records.</p>
+          </div>
+        </div>
+        <div class="legacy__item reveal">
+          <span class="legacy__year">'90s</span>
+          <div class="legacy__body">
+            <h3>Hip-House Royalty</h3>
+            <p><em>"Baby Wants To Move You"</em> (with Brett Wilcott, Gherkin Records) named among the <strong>best hip-house records of the '90s</strong>.</p>
+          </div>
+        </div>
+        <div class="legacy__item reveal">
+          <span class="legacy__year">Now</span>
+          <div class="legacy__body">
+            <h3>2HoussMusic · Phoenix</h3>
+            <p>CEO of his own label, dropping fresh House, Electronica &amp; Dance from the desert — the flame never left.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="contact section" id="contact">
+      <div class="contact__inner">
+        <div class="contact__cta reveal">
+          <h2 class="contact__title">Let's<br /><em>Work</em></h2>
+          <p>Bookings · Remixes · Collabs — the groove is always open.</p>
+          <div class="contact__actions">
+            <a class="btn btn--solid magnetic" href="mailto:bookings@2houss.com" data-label="SEND"><span class="btn__label">Book J Lofton</span></a>
+            <a class="btn btn--ghost magnetic" href="http://Jlofton.RageOn.com" target="_blank" rel="noopener" data-label="SHOP"><span class="btn__label">Shop Merch</span></a>
+          </div>
+        </div>
+        <div class="contact__socials">
+          <a class="social magnetic reveal" href="https://www.instagram.com/houssmusic/" target="_blank" rel="noopener" data-label="OPEN"><span>Instagram</span><i>↗</i></a>
+          <a class="social magnetic reveal" href="https://x.com/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN"><span>X / Twitter</span><i>↗</i></a>
+          <a class="social magnetic reveal" href="https://www.facebook.com/groups/MidwestGrownNSexy" target="_blank" rel="noopener" data-label="OPEN"><span>Facebook</span><i>↗</i></a>
+          <a class="social magnetic reveal" href="https://www.youtube.com/user/2HoussMusic" target="_blank" rel="noopener" data-label="OPEN"><span>YouTube</span><i>↗</i></a>
+          <a class="social magnetic reveal" href="https://www.discogs.com/artist/414653-James-Lofton" target="_blank" rel="noopener" data-label="OPEN"><span>Discogs</span><i>↗</i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__wordmark" aria-hidden="true">2HOUSS</div>
+    <div class="footer__bar">
+      <span>© 2026 2HoussMusic · J Lofton</span>
+      <span>Chicago → Phoenix, AZ</span>
+      <span>A tribute experience · built with love</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
