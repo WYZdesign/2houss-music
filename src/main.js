@@ -575,9 +575,120 @@ function initBooking() {
 /* ============================================================
    BOOT
    ============================================================ */
+function initTurntable() {
+  const tt = document.getElementById('turntable');
+  if (!tt) return;
+  const btn = tt.querySelector('.turntable__scratch');
+  if (!btn) return;
+  let scratching = false;
+  let startTime = 0;
+  const duration = 4000;
+  btn.addEventListener('mousedown', (e) => { e.preventDefault(); if (scratching) return; scratching = true; startTime = performance.now(); btn.style.setProperty('--scratch', '0.2'); });
+  btn.addEventListener('mousemove', (e) => {
+    if (!scratching) return;
+    const r = btn.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    btn.style.setProperty('--scratch', px);
+  });
+  const stop = () => {
+    scratching = false;
+    btn.style.removeProperty('--scratch');
+  };
+  btn.addEventListener('mouseup', stop);
+  btn.addEventListener('mouseleave', stop);
+  btn.addEventListener('touchstart', (e) => { e.preventDefault(); if (scratching) return; scratching = true; startTime = performance.now(); btn.style.setProperty('--scratch', '0.2'); }, { passive: false });
+  btn.addEventListener('touchmove', (e) => {
+    if (!scratching) return;
+    const t = e.touches[0];
+    const r = btn.getBoundingClientRect();
+    const px = (t.clientX - r.left) / r.width;
+    btn.style.setProperty('--scratch', px);
+  }, { passive: false });
+  btn.addEventListener('touchend', stop);
+}
+
+function initThemeToggle() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  const root = document.documentElement;
+  const current = localStorage.getItem('theme');
+  if (current === 'light') { root.classList.add('light'); toggle.textContent = '☾'; }
+  else { root.classList.remove('light'); toggle.textContent = '☀︎'; }
+  toggle.addEventListener('click', () => {
+    root.classList.toggle('light');
+    if (root.classList.contains('light')) { localStorage.setItem('theme', 'light'); toggle.textContent = '☾'; }
+    else { localStorage.setItem('theme', 'dark'); toggle.textContent = '☀︎'; }
+  });
+}
+
+function initGuestbook() {
+  const form = document.getElementById('guestbook');
+  const list = document.getElementById('guests');
+  if (!form || !list) return;
+  let guests = [];
+  try { guests = JSON.parse(localStorage.getItem('guests') || '[]'); } catch { guests = []; }
+  const render = () => {
+    if (!guests.length) { list.innerHTML = '<p class="guests__empty">No signatures yet — be the first.</p>'; return; }
+    list.innerHTML = guests.slice(-20).reverse().map((g) => `<span class="guest">${g.name}${g.city ? ' · ' + g.city : ''}</span>`).join('');
+  };
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = (fd.get('name') || '').trim();
+    const city = (fd.get('city') || '').trim();
+    if (!name) return;
+    const record = { name, city, t: Date.now() };
+    guests.push(record);
+    if (guests.length > 200) guests = guests.slice(-200);
+    localStorage.setItem('guests', JSON.stringify(guests));
+    form.reset();
+    render();
+    const svg = `<svg class="guestbook__pin" width="20" height="20" viewBox="0 0 16 16"><use href="#r"/></svg>`;
+    form.insertAdjacentHTML('beforeend', svg);
+    setTimeout(() => { const p = form.querySelector('.guestbook__pin'); if (p) p.remove(); }, 1500);
+  });
+  render();
+}
+
+function buildSessions() {
+  const grid = document.getElementById('sessions__grid');
+  if (!grid) return;
+  const sessions = [
+    { title: 'Warehouse Sessions Vol. 1', bpm: '124 BPM', vibe: 'Deep · Jackin · Underground' },
+    { title: 'After Hours Mix', bpm: '126 BPM', vibe: 'Soulful · Late Night' },
+    { title: 'Phoenix Desert Grooves', bpm: '122 BPM', vibe: 'Chill · Organic' },
+    { title: 'Chicago Classics Revival', bpm: '128 BPM', vibe: 'Acid · Raw · Classic' },
+    { title: 'Hip-House Rewind', bpm: '125 BPM', vibe: '90s · Nostalgia' },
+    { title: 'Deep Tech Journey', bpm: '123 BPM', vibe: 'Minimal · Melodic' },
+  ];
+  grid.innerHTML = sessions.map((s, i) => `
+    <div class="session-card reveal" style="--i:${i}">
+      <div class="session-card__cover cover--${i % 12}"><div class="disc__glow"></div></div>
+      <div class="session-card__body">
+        <h3>${s.title}</h3>
+        <p class="session-card__bpm">${s.bpm}</p>
+        <p class="session-card__vibe">${s.vibe}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+const SESSIONS_DATA = [
+  { title: 'Warehouse Sessions Vol. 1', bpm: '124 BPM', vibe: 'Deep · Jackin · Underground' },
+  { title: 'After Hours Mix', bpm: '126 BPM', vibe: 'Soulful · Late Night' },
+  { title: 'Phoenix Desert Grooves', bpm: '122 BPM', vibe: 'Chill · Organic' },
+  { title: 'Chicago Classics Revival', bpm: '128 BPM', vibe: 'Acid · Raw · Classic' },
+  { title: 'Hip-House Rewind', bpm: '125 BPM', vibe: '90s · Nostalgia' },
+  { title: 'Deep Tech Journey', bpm: '123 BPM', vibe: 'Minimal · Melodic' },
+];
+
 function boot() {
   initEmbeds();
   initBooking();
+  initTurntable();
+  initThemeToggle();
+  initGuestbook();
+  buildSessions();
   if (!reduced) {
     initParticles();
     initDiscoBall();

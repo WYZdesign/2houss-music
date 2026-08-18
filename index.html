@@ -40,6 +40,7 @@
 </head>
 <body>
   <a class="skip-link" href="#about">Skip to content</a>
+  <svg class="sprites" aria-hidden="true"><symbol id="r" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#d6b373" stroke-width="1.6"/><circle cx="8" cy="8" r="2.4" fill="#1a1106"/></symbol></svg>
   <!-- ===================== PRELOADER ===================== -->
   <div class="preloader" id="preloader">
     <div class="preloader__inner">
@@ -81,12 +82,14 @@
       <a href="#videos" class="nav__link" data-text="Videos">Videos</a>
       <a href="#legacy" class="nav__link" data-text="Legacy">Legacy</a>
       <a href="#press" class="nav__link" data-text="Press">Press</a>
+      <a href="#sessions" class="nav__link" data-text="Sessions">Sessions</a>
     </nav>
     <div class="nav__cta">
-      <a class="btn btn--solid magnetic" href="https://open.spotify.com/artist/1rsg5p2upYrSUIyYPDsZmA" target="_blank" rel="noopener">
-        <span class="btn__label">Listen Now</span>
-      </a>
-      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <a class="btn btn--solid magnetic" href="https://open.spotify.com/artist/1rsg5p2upYrSUIyYPDsZmA" target="_blank" rel="noopener">
+          <span class="btn__label">Listen Now</span>
+        </a>
+        <button class="nav__theme" id="themeToggle" aria-label="Toggle theme" data-label="THEME">☀︎</button>
+        <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
       </button>
     </div>
@@ -103,6 +106,7 @@
       <a href="#legacy" class="menu__item" style="--i:4"><span class="menu__num">05</span> Legacy</a>
       <a href="#press" class="menu__item" style="--i:5"><span class="menu__num">06</span> Press</a>
       <a href="#contact" class="menu__item" style="--i:6"><span class="menu__num">07</span> Contact</a>
+      <a href="#sessions" class="menu__item" style="--i:7"><span class="menu__num">08</span> Sessions</a>
     </nav>
     <div class="menu__foot">
       <span>Chicago → Phoenix</span>
@@ -382,6 +386,29 @@
       </div>
     </section>
 
+    <!-- ===================== TURNTABLE ===================== -->
+    <section class="turntable section" id="turntable">
+      <div class="section__head reveal">
+        <span class="section__index">07 — THE SETUP</span>
+        <h2 class="section__title">Scratch<br /><em>The Sound</em></h2>
+      </div>
+      <div class="turntable__inner">
+        <div class="turntable__platter" aria-hidden="true">
+          <div class="turntable__vinyl">
+            <div class="vinyl__grooves"></div>
+            <div class="vinyl__label"><span>2HOUSS</span><small>LIVE</small></div>
+          </div>
+          <div class="turntable__Tonearm">
+            <div class="tonearm__bar"></div>
+            <div class="tonearm__head"></div>
+          </div>
+        </div>
+        <div class="turntable__controls">
+          <button class="turntable__scratch btn btn--ghost magnetic" data-label="SCRATCH">Scratch Me</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== CONTACT / BOOKING ===================== -->
     <section class="contact section" id="contact">
       <div class="section__head reveal">
@@ -432,8 +459,26 @@
             <a class="social magnetic reveal" href="https://www.discogs.com/artist/414653-James-Lofton" target="_blank" rel="noopener" data-label="OPEN"><span>Discogs</span><i>↗</i></a>
           </div>
           <a class="btn btn--ghost magnetic reveal" href="http://Jlofton.RageOn.com" target="_blank" rel="noopener" data-label="SHOP"><span class="btn__label">Shop Merch</span></a>
+          <div class="guestbook reveal">
+            <p class="guestbook__title">Sign the vinyl</p>
+            <form class="guestbook__form" id="guestbook">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="text" name="city" placeholder="Your city" />
+              <button class="btn btn--ghost magnetic" type="submit" data-label="PIN"><span class="btn__label">Drop a pin</span></button>
+            </form>
+            <div class="guests" id="guests"></div>
+            <p class="guestbook__note">Saved in your browser.</p>
+          </div>
         </div>
       </div>
+    </section>
+    <!-- ===================== SESSIONS / CRATE ===================== -->
+    <section class="sessions section" id="sessions">
+      <div class="section__head reveal">
+        <span class="section__index">08 — SESSIONS</span>
+        <h2 class="section__title">Warehouse<br /><em>Crates</em></h2>
+      </div>
+      <div class="sessions__grid" id="sessions__grid"></div>
     </section>
   </main>
 
