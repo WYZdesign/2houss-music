@@ -12,7 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
@@ -222,7 +222,10 @@
       </div>
       <div class="sound__grid">
         <div class="sound__player reveal">
-          <iframe src="https://open.spotify.com/embed/artist/1rsg5p2upYrSUIyYPDsZmA?utm_source=generator&theme=0" title="2Housspeople on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <button class="embed" data-src="https://open.spotify.com/embed/artist/1rsg5p2upYrSUIyYPDsZmA?utm_source=generator&theme=0" data-title="2Housspeople on Spotify" aria-label="Load 2Housspeople on Spotify">
+            <span class="embed__play">♪</span>
+            <span class="embed__hint">Load the 2Housspeople player</span>
+          </button>
         </div>
         <div class="sound__info">
           <p class="reveal">Deep, jackin', soulful — the raw sound born in Chicago's warehouses, four on the floor, carried south to the desert. No gimmicks. Just groove.</p>
@@ -252,7 +255,10 @@
       <div class="videos__grid">
         <div class="video-card reveal">
           <div class="video-card__frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/XmTjzBqZhP0?rel=0" title="Fuzion (feat. J Lofton) — 2Housspeople" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button class="embed" data-src="https://www.youtube-nocookie.com/embed/XmTjzBqZhP0?rel=0&autoplay=1" data-title="Fuzion (feat. J Lofton) — 2Housspeople" aria-label="Play Fuzion video">
+              <span class="embed__play">▶</span>
+              <span class="embed__hint">Play · Fuzion</span>
+            </button>
           </div>
           <div class="video-card__meta">
             <h3>Fuzion <em>(feat. J Lofton)</em></h3>
@@ -261,7 +267,10 @@
         </div>
         <div class="video-card reveal">
           <div class="video-card__frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL0Wrx5tVa7mfp02TBsr3WmcTYoDyw9V3X" title="2HoussMusic — Video Playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button class="embed" data-src="https://www.youtube-nocookie.com/embed/videoseries?list=PL0Wrx5tVa7mfp02TBsr3WmcTYoDyw9V3X&autoplay=1" data-title="2HoussMusic — Video Playlist" aria-label="Play the 2Houss playlist">
+              <span class="embed__play">▶</span>
+              <span class="embed__hint">Play · The 2Houss Playlist</span>
+            </button>
           </div>
           <div class="video-card__meta">
             <h3>The 2Houss <em>Playlist</em></h3>

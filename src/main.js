@@ -216,7 +216,7 @@ function initParticles() {
   ];
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2);
     w = canvas.width = window.innerWidth * dpr;
     h = canvas.height = window.innerHeight * dpr;
     canvas.style.width = window.innerWidth + 'px';
@@ -398,6 +398,14 @@ function initDiscoBall() {
     if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
     else if (!raf && !reduced) raf = requestAnimationFrame(frame);
   });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { if (!raf && !reduced) raf = requestAnimationFrame(frame); }
+        else { cancelAnimationFrame(raf); raf = null; }
+      });
+    }).observe(canvas);
+  }
 }
 
 /* ============================================================
@@ -527,9 +535,28 @@ function initProgress() {
 }
 
 /* ============================================================
+   EMBED FACADES (click-to-load)
+   ============================================================ */
+function initEmbeds() {
+  document.querySelectorAll('.embed[data-src]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const src = el.getAttribute('data-src');
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = el.getAttribute('data-title') || 'Media player';
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen');
+      iframe.allowFullscreen = true;
+      el.replaceWith(iframe);
+    });
+  });
+}
+
+/* ============================================================
    BOOT
    ============================================================ */
 function boot() {
+  initEmbeds();
   if (!reduced) {
     initParticles();
     initDiscoBall();
